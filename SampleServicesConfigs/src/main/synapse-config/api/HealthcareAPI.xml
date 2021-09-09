@@ -17,6 +17,7 @@
     </resource>
     <resource methods="POST" uri-template="/categories/{category}/reserve">
         <inSequence>
+            <log level="full"/>
             <property expression="json-eval($.hospital)" name="Hospital" scope="default" type="STRING"/>
             <switch source="get-property('Hospital')">
                 <case regex="grand oak community hospital">
