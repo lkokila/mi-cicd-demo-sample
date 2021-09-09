@@ -1,0 +1,33 @@
+<unit-test>
+    <artifacts>
+        <test-artifact>
+            <artifact>/SampleServicesConfigs/src/main/synapse-config/api/HealthcareAPI.xml</artifact>
+        </test-artifact>
+        <supportive-artifacts>
+            <artifact>/SampleServicesConfigs/src/main/synapse-config/endpoints/GrandOakEP.xml</artifact>
+            <artifact>/SampleServicesConfigs/src/main/synapse-config/endpoints/ClemencyEP.xml</artifact>
+            <artifact>/SampleServicesConfigs/src/main/synapse-config/endpoints/QueryDoctorEP.xml</artifact>
+            <artifact>/SampleServicesConfigs/src/main/synapse-config/endpoints/PineValleyEP.xml</artifact>
+        </supportive-artifacts>
+        <registry-resources/>
+        <connector-resources/>
+    </artifacts>
+    <test-cases>
+        <test-case name="queryDoctorEpTest">
+            <input>
+                <request-path>/querydoctor/surgery</request-path>
+                <request-method>GET</request-method>
+            </input>
+            <assertions>
+                <assertEquals>
+                    <actual>$body</actual>
+                    <expected><![CDATA[[{"name":"thomascollins","hospital":"grandoakcommunityhospital","category":"surgery","availability":"9.00a.m-11.00a.m","fee":7000.0},{"name":"anneclement","hospital":"clemencymedicalcenter","category":"surgery","availability":"8.00a.m-10.00a.m","fee":12000.0},{"name":"sethmears","hospital":"pinevalleycommunityhospital","category":"surgery","availability":"3.00p.m-5.00p.m","fee":8000.0}]]]></expected>
+                    <message>Assertion Failed</message>
+                </assertEquals>
+            </assertions>
+        </test-case>
+    </test-cases>
+    <mock-services>
+        <mock-service>/SampleServicesConfigs/test/resources/mock-services/queryDoctorEpMock.xml</mock-service>
+    </mock-services>
+</unit-test>
